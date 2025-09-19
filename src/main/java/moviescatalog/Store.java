@@ -13,7 +13,7 @@ public class Store {
 
   public void deleteProduct(Product product){
     Product findProduct = null ;
-    
+
     for (Product prod : products){
       if(prod.name.equals(product.name)){
         System.out.println("Produit trouver");
