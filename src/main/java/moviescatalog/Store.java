@@ -2,6 +2,7 @@ package moviescatalog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Store {
     List<Product> products = new ArrayList<>();
@@ -24,6 +25,63 @@ public class Store {
     if(findProduct != null)products.remove(findProduct);
     
   }
+
+  public void modifyProduct(Product product){
+    Scanner sc = new Scanner(System.in);
+    Product findProd = null ;
+    for (Product prod : products){
+      if(prod.name.equals(product.name)){
+        findProd = prod ;
+      }
+    }
+    if(findProd != null){
+      boolean quitter = false;
+      while (!quitter) {
+    
+      
+      System.out.println("Que souhaitez vous modifier sur le produit ?");
+      System.out.println("1 - Modifier le nom");
+      System.out.println("2 - Modifier le prix");
+      System.out.println("3 - Modifier le stock");
+      System.out.println("4 - Quitter");
+
+      int result = sc.nextInt();
+      sc.nextLine();
+
+      switch (result) {
+        case 1:
+          System.out.println("Nouveau Nom du produit");
+          String newName = sc.nextLine();
+          findProd.setName(newName);
+          break;
+
+        case 2:
+          System.out.println("Nouveau prix du produit");
+          int newPrice = sc.nextInt();
+          sc.nextLine();
+          findProd.setPrice(newPrice);
+        break;
+
+        case 3:
+          System.out.println("Nouveau Stock du produit");
+          int newStock = sc.nextInt();
+          sc.nextLine();
+          findProd.setStock(newStock);
+          break;
+
+        case 4:
+          quitter = true;
+          break;
+      
+        default:
+        System.out.println("Choix invalide, réessayez.");
+          break;
+      }
+      
+    };
+  }
+  sc.close();
+}
 
   public void addClient (Client client){
     clients.add(client);
