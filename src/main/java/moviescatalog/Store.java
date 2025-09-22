@@ -30,6 +30,10 @@ public class Store {
     return products;
   }
 
+  public List<Client> getClients() {
+    return clients;
+  }
+
   public void addProduct(Product product) {
     products.add(product);
   }

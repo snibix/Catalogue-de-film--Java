@@ -45,4 +45,12 @@ public class Client {
   public int getId() {
     return id;
   }
+
+  @Override
+  public String toString() {
+    return " | Nom: " + name +
+        " | Email: " + email +
+        " | Num: " + num;
+  }
+
 }
