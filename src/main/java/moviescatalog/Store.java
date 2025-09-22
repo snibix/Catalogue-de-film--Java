@@ -109,7 +109,6 @@ public class Store {
       }
       ;
     }
-    sc.close();
   }
 
   public Client findClientByName(String name) {
