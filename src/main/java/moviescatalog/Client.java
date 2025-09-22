@@ -4,31 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-  
-  String name;
-  String email;
-  int phone ;
-  List<Order> order = new ArrayList<>() ;
-  
-  public Client(String name,String email,int phone ){
+  private static int counter = 1;
+  private int id;
+  private String name;
+  private String email;
+  private int num;
+  List<Order> order = new ArrayList<>();
+
+  public Client(String name, String email, int num) {
+    this.id = counter++;
     this.name = name;
     this.email = email;
-    this.phone = phone ;
+    this.num = num;
   }
 
-  public String getName(){
-    return name ;
+  public String getName() {
+    return name;
   }
 
-  public void setName (String name){
+  public void setName(String name) {
     this.name = name;
   }
 
-  public String getEmail (){
+  public String getEmail() {
     return email;
   }
 
-  public void setEmail(String email){
+  public void setEmail(String email) {
     this.email = email;
+  }
+
+  public int getNum() {
+    return num;
+  }
+
+  public void setNum(int num) {
+    this.num = num;
+  }
+
+  public int getId() {
+    return id;
   }
 }
