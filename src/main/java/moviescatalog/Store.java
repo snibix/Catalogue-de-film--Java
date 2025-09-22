@@ -88,6 +88,7 @@ public class Store {
   }
 
   public void delete (Client client){
+
    Client findClient = null;
 
   for (Client customer : clients){
@@ -97,5 +98,52 @@ public class Store {
   }
 
   if(findClient != null) clients.remove(findClient);
+  }
+
+  public void modifyClient (Client client){
+    Scanner sc = new Scanner(System.in);
+    Client findClient = null;
+
+    for (Client cl : clients ){
+      if (cl.name.equalsIgnoreCase(client.name)) {
+        findClient = cl;
+      }
+    }
+
+    if(findClient != null){
+      boolean quitter = false ;
+
+      while (!quitter) {
+        System.out.println("1 - Modifier le nom ?");
+        System.out.println("2 - Modifiier l'adresse email");
+        System.out.println("3 - Quitter");
+
+        int result = sc.nextInt();
+
+        switch (result) {
+          case 1:
+            System.out.println("Entrez votre nouveau nom ");
+            String newName = sc.nextLine();
+            findClient.setName(newName);
+            break;
+
+          case 2:
+             System.out.println("Entrez votre nouveau email");
+             String newEmail = sc.nextLine();
+
+             findClient.setEmail(newEmail);
+            break;
+        
+          case 3:
+             quitter = true ;
+            break;
+
+            default:
+            System.out.println("Choix invalide, réessayez.");
+              break;
+        }
+      }
+    }
+    sc.close();
   }
 }
