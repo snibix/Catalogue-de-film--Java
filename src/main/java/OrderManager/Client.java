@@ -1,4 +1,4 @@
-package moviescatalog;
+package OrderManager;
 
 import java.util.ArrayList;
 import java.util.List;

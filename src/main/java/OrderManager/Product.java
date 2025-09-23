@@ -1,4 +1,4 @@
-package moviescatalog;
+package OrderManager;
 
 public class Product {
   private static int counter = 1;
