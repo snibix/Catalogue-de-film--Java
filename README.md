@@ -1,12 +1,12 @@
-# MoviesCatalog - Application Console
+# OrderManager - Application Console
 
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://www.java.com/) 
 [![Licence](https://img.shields.io/badge/Licence-MIT-green)](LICENSE)
 
 ## Concept
 
-MoviesCatalog est une **application Java en console** pour gérer un catalogue de produits, clients et commandes.  
-L'objectif est de fournir une interface simple pour **ajouter, modifier, supprimer et lister les produits et les clients**, avec la gestion des commandes à venir.
+OrderManager est une **application Java en console** pour gérer un **catalogue de produits, clients et commandes**.  
+L'objectif est de fournir une interface simple pour **ajouter, modifier, supprimer et lister les produits et les clients**, ainsi que de préparer la gestion des commandes.
 
 ---
 
@@ -39,4 +39,3 @@ L'objectif est de fournir une interface simple pour **ajouter, modifier, supprim
   - Lister les commandes d’un client
 
 ---
-
