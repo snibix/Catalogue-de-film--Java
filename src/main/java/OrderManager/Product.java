@@ -42,6 +42,22 @@ public class Product {
     return id;
   }
 
+  public boolean decrementStock(int quantity) {
+    if (quantity <= stock) {
+      this.stock = stock - quantity;
+      System.out.println("Nouveau " + stock);
+      return true;
+    } else {
+      System.out.println("Stock insufissant ");
+      return false;
+    }
+  }
+
+  public void incrementStock(int quantity) {
+    this.stock += quantity;
+    System.out.println("Stock mis à jour ! ");
+  }
+
   @Override
   public String toString() {
     return " | Nom: " + name +
