@@ -7,6 +7,14 @@ import java.util.Scanner;
 public class Store {
   List<Product> products = new ArrayList<>();
   List<Client> clients = new ArrayList<>();
+  private List<Order> orders = new ArrayList<>();
+
+  // Constructeur
+  public Store() {
+    this.products = new ArrayList<>();
+    this.clients = new ArrayList<>();
+    this.orders = new ArrayList<>();
+  }
 
   public Product finProductById(int id) {
     for (Product p : products) {
@@ -191,4 +199,20 @@ public class Store {
     }
   }
 
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void addOrder(Order order) {
+    orders.add(order);
+  }
+
+  public Order findOrderById(int id) {
+    for (Order order : orders) {
+      if (order.getId() == id) {
+        return order;
+      }
+    }
+    return null;
+  }
 }

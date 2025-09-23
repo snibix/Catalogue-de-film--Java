@@ -1,5 +1,6 @@
 package OrderManager;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +13,7 @@ public class Main {
             System.out.println("--- Menu Principal ---");
             System.out.println("1 - Gérer les Produits");
             System.out.println("2 - Gérer les Clients");
+            System.out.println("3 - Gérer les Commandes");
             System.out.println("0 - Quitter");
             System.out.println("Votre choix: ");
 
@@ -21,6 +23,7 @@ public class Main {
             switch (choix) {
                 case 1 -> menuProduits(store, sc);
                 case 2 -> menuClients(store, sc);
+                case 3 -> menuCommandes(store, sc);
                 case 0 -> System.out.println("Au revoir !");
                 default -> System.out.println("Choix invalide !");
             }
@@ -155,4 +158,95 @@ public class Main {
         } while (choix != 0);
     }
 
+    private static void menuCommandes(Store store, Scanner sc) {
+        int choix;
+        do {
+            System.out.println("\n--- Gestion Commandes ---");
+            System.out.println("1. Voir toutes les commandes");
+            System.out.println("2. Créer une nouvelle commande");
+            System.out.println("3. Ajouter un produit à une commande");
+            System.out.println("4. Retirer un produit d’une commande");
+            System.out.println("5. Afficher les détails d’une commande");
+            System.out.println("0. Retour");
+            System.out.print("Votre choix : ");
+            choix = sc.nextInt();
+            sc.nextLine();
+
+            switch (choix) {
+                case 1 -> { // Voir toutes les commandes
+                    for (Order order : store.getOrders()) {
+                        System.out.println(order);
+                    }
+                }
+                case 2 -> { // Créer une nouvelle commande
+                    System.out.print("Nom du client : ");
+                    String clientName = sc.nextLine();
+                    Client client = store.findClientByName(clientName);
+                    if (client != null) {
+                        Order order = new Order(client, LocalDateTime.now(), 0);
+                        store.addOrder(order);
+                        System.out.println("Commande créée pour " + client.getName());
+                    } else {
+                        System.out.println("Client introuvable !");
+                    }
+                }
+                case 3 -> { // Ajouter un produit à une commande
+                    System.out.print("ID de la commande : ");
+                    int orderId = sc.nextInt();
+                    sc.nextLine();
+                    Order order = store.findOrderById(orderId);
+                    if (order != null) {
+                        System.out.print("Nom du produit à ajouter : ");
+                        String productName = sc.nextLine();
+                        Product product = store.findProductByName(productName);
+                        if (product != null) {
+                            System.out.print("Quantité : ");
+                            int quantity = sc.nextInt();
+                            sc.nextLine();
+                            order.addProduct(product, quantity);
+                        } else {
+                            System.out.println("Produit introuvable !");
+                        }
+                    } else {
+                        System.out.println("Commande introuvable !");
+                    }
+                }
+                case 4 -> { // Retirer un produit d’une commande
+                    System.out.print("ID de la commande : ");
+                    int orderId = sc.nextInt();
+                    sc.nextLine();
+                    Order order = store.findOrderById(orderId);
+                    if (order != null) {
+                        System.out.print("Nom du produit à retirer : ");
+                        String productName = sc.nextLine();
+                        Product product = store.findProductByName(productName);
+                        if (product != null) {
+                            System.out.print("Quantité : ");
+                            int quantity = sc.nextInt();
+                            sc.nextLine();
+                            order.removeProduct(product, quantity);
+                        } else {
+                            System.out.println("Produit introuvable !");
+                        }
+                    } else {
+                        System.out.println("Commande introuvable !");
+                    }
+                }
+                case 5 -> {
+                    System.out.print("ID de la commande : ");
+                    int orderId = sc.nextInt();
+                    sc.nextLine();
+                    Order order = store.findOrderById(orderId);
+                    if (order != null) {
+                        order.toString();
+                    } else {
+                        System.out.println("Commande introuvable !");
+                    }
+                }
+                case 0 -> System.out.println("Retour au menu principal");
+                default -> System.out.println("Choix invalide !");
+            }
+
+        } while (choix != 0);
+    }
 }

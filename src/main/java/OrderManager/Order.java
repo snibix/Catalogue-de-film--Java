@@ -15,12 +15,17 @@ public class Order {
     this.id = counter++;
     this.client = client;
     this.date = date;
+    this.products = new HashMap<>();
   }
 
   public double getTotal() {
     return products.entrySet().stream()
         .mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue())
         .sum();
+  }
+
+  public int getId() {
+    return id;
   }
 
   public void addProduct(Product product, int quantity) {
