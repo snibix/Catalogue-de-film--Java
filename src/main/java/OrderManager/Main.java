@@ -6,6 +6,26 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Store store = new Store();
+
+        Product p1 = new Product("Livre", 25, 250);
+        Product p2 = new Product("Veste", 50, 500);
+        Product p3 = new Product("Tapis", 30, 100);
+
+        Client cl1 = new Client("john", "john@gmail.com", 123456);
+        Client cl2 = new Client("Bernard", "Bernard@gmail.com", 789456);
+
+        Order order1 = new Order(cl1, null, 0);
+        Order order2 = new Order(cl2, null, 0);
+        store.addProduct(p1);
+        store.addProduct(p2);
+        store.addProduct(p3);
+
+        store.addClient(cl1);
+        store.addClient(cl2);
+
+        store.addOrder(order1);
+        store.addOrder(order2);
+
         Scanner sc = new Scanner(System.in);
         int choix;
 
