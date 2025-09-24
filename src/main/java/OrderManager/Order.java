@@ -11,10 +11,10 @@ public class Order {
   private Map<Product, Integer> products = new HashMap<>();
   private LocalDateTime date;
 
-  public Order(Client client, LocalDateTime date, int total) {
+  public Order(Client client) {
     this.id = counter++;
     this.client = client;
-    this.date = date;
+    this.date = LocalDateTime.now();
     this.products = new HashMap<>();
   }
 

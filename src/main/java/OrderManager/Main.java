@@ -1,6 +1,5 @@
 package OrderManager;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Main {
@@ -14,8 +13,8 @@ public class Main {
         Client cl1 = new Client("john", "john@gmail.com", 123456);
         Client cl2 = new Client("Bernard", "Bernard@gmail.com", 789456);
 
-        Order order1 = new Order(cl1, null, 0);
-        Order order2 = new Order(cl2, null, 0);
+        Order order1 = new Order(cl1);
+        Order order2 = new Order(cl2);
         store.addProduct(p1);
         store.addProduct(p2);
         store.addProduct(p3);
@@ -203,7 +202,7 @@ public class Main {
                     String clientName = sc.nextLine();
                     Client client = store.findClientByName(clientName);
                     if (client != null) {
-                        Order order = new Order(client, LocalDateTime.now(), 0);
+                        Order order = new Order(client);
                         store.addOrder(order);
                         System.out.println("Commande créée pour " + client.getName());
                     } else {
